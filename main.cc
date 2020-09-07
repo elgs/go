@@ -1,4 +1,6 @@
-#include "go.hpp"
+#include "shared.h"
+#include "go_board.h"
+#include "go_game.h"
 
 int main() {
   auto game = new Game();
