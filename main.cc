@@ -11,7 +11,8 @@ int main() {
   try {
     game->move(4, 4);
     game->move(3, 3);
-    game->move(3, 3);
+    game->move(5, 3);
+    game->move(5, 6);
   } catch (exception& e) {
     cout << e.what() << endl;
   }

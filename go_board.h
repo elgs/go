@@ -11,11 +11,9 @@ using namespace std;
 
 struct Board {
   int state[BOARD_LINES * BOARD_LINES]{};
-  int side = 1;
-  Move move;
+  Move move{};
 
   Board() {}
-  Board(Move move) { this->move = move; }
   ~Board() {}
 
   int getAt(int x, int y) const { return state[x * BOARD_LINES + y]; }

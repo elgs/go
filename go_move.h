@@ -9,21 +9,24 @@ using namespace std;
 
 struct Move {
   int index;
+  int side = 0;
   int x = -1;
   int y = -1;
 
   Move() {}
 
-  Move(int index, int x, int y) {
+  Move(int index, int x, int y, int side) {
     this->index = index;
     this->x = x;
     this->y = y;
+    this->side = side;
   }
 
   friend ostream& operator<<(ostream& os, const Move& game);
 };
 
 ostream& operator<<(ostream& os, const Move& move) {
-  os << "index: " << move.index << ", x: " << move.x << ", y: " << move.y;
+  os << "index: " << move.index << ", x: " << move.x << ", y: " << move.y
+     << ", side: " << move.side;
   return os;
 }

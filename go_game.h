@@ -36,7 +36,7 @@ void Game::move(int x, int y) {
   ++board.move.index;
   board.move.x = x;
   board.move.y = y;
-  board.side = board.side == 1 ? 2 : 1;
-  board.setAt(board.side, x, y);
+  board.move.side = board.move.side == 1 ? 2 : 1;
+  board.setAt(board.move.side, x, y);
   boards.push_back(board);
 };
