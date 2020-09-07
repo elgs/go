@@ -5,35 +5,38 @@
 #include <vector>
 
 #include "go_board.h"
-
-#define BOARD_LINES 19
+#include "shared.h"
 
 using namespace std;
 
 struct Game {
-  vector<Board>* boards;
-  Game() {
-    boards = new vector<Board>();
-    boards->push_back(Board{});
-  }
-  ~Game() { delete boards; }
+  vector<Board> boards{};
+  Game() { boards.push_back(Board{}); }
+  ~Game() {}
 
-  void move(int x, int y) {
-    auto board = boards->back();
-    if (board.getAt(x, y) != 0) {
-      stringstream s;
-      s << "Invalid move at: " << x << y;
-      throw runtime_error(s.str());
-    }
-    ++board.move;
-    board.side = board.side == 1 ? 2 : 1;
-    board.setAt(board.side, x, y);
-    boards->push_back(board);
-  }
+  void move(int x, int y);
 
-  void print() {
-    for (auto& board : *boards) {
-      board.print();
-    }
+  friend ostream& operator<<(ostream& os, const Game& game);
+};
+
+ostream& operator<<(ostream& os, const Game& game) {
+  for (auto& board : game.boards) {
+    os << board;
   }
+  return os;
+}
+
+void Game::move(int x, int y) {
+  auto board = boards.back();
+  if (board.getAt(x, y) != 0) {
+    stringstream s;
+    s << "Invalid move at: " << x << y;
+    throw runtime_error(s.str());
+  }
+  ++board.move.index;
+  board.move.x = x;
+  board.move.y = y;
+  board.side = board.side == 1 ? 2 : 1;
+  board.setAt(board.side, x, y);
+  boards.push_back(board);
 };
