@@ -24,6 +24,6 @@ struct Move {
 };
 
 ostream& operator<<(ostream& os, const Move& move) {
-  os << "Index: " << move.index << ", x: " << move.x << ", y: " << move.y;
+  os << "index: " << move.index << ", x: " << move.x << ", y: " << move.y;
   return os;
 }

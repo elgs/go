@@ -21,7 +21,7 @@ struct Game {
 
 ostream& operator<<(ostream& os, const Game& game) {
   for (auto& board : game.boards) {
-    os << board;
+    os << board << endl;
   }
   return os;
 }
