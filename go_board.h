@@ -52,11 +52,6 @@ ostream& operator<<(ostream& os, const Board& board) {
     os << i % 10 << " ";
   }
   os << endl;
-  os << "   ";
-  for (auto i = 0; i < LINES; ++i) {
-    os << static_cast<char>(i + 97) << " ";
-  }
-  os << endl;
   for (auto i = 0; i < LINES; ++i) {
     os << setw(2) << i << " ";
     for (auto j = 0; j < LINES; ++j) {
@@ -71,22 +66,40 @@ ostream& operator<<(ostream& os, const Board& board) {
           a = a || i == 2 || i == (LINES - 1) / 2 || i == LINES - 3;
           b = b || j == 2 || j == (LINES - 1) / 2 || j == LINES - 3;
         }
+        auto grid = "┼";
+        if (i == 0) {
+          grid = "┬";
+        } else if (i == LINES - 1) {
+          grid = "┴";
+        }
+
+        if (j == 0) {
+          grid = "├";
+        } else if (j == LINES - 1) {
+          grid = "┤";
+        }
+
+        if (i == 0 && j == 0) {
+          grid = "┌";
+        } else if (i == 0 && j == LINES - 1) {
+          grid = "┐";
+        } else if (i == LINES - 1 && j == 0) {
+          grid = "└";
+        } else if (i == LINES - 1 && j == LINES - 1) {
+          grid = "┘";
+        }
+
         auto isStar = a && b;
-        os << (isStar ? "\033[1;33m*\033[0m" : "+");
+        os << (isStar ? "\033[1;33m*\033[0m" : grid);
       } else if (v == 1) {
         os << "●";
       } else if (v == 2) {
         os << "○";
       }
-      os << " ";
+      os << (j == LINES - 1 ? " " : "─");
     }
     os << i << endl;
   }
-  os << "   ";
-  for (auto i = 0; i < LINES; ++i) {
-    os << static_cast<char>(i + 97) << " ";
-  }
-  os << endl;
   os << "   ";
   for (auto i = 0; i < LINES; ++i) {
     os << i % 10 << " ";
