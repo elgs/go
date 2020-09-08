@@ -12,7 +12,7 @@ int main() {
   while (true) {
     auto latestBoard = game->boards.back();
     cout << latestBoard;
-    cout << (latestBoard.move.side == 1 ? "● " : "○ ");
+    cout << (latestBoard.move.side == 1 ? "○ " : "● ");
     cin >> x >> y;
     game->move(x, y);
   };

@@ -74,9 +74,9 @@ ostream& operator<<(ostream& os, const Board& board) {
         auto isStar = a && b;
         os << (isStar ? "\033[1;33m*\033[0m" : "+");
       } else if (v == 1) {
-        os << "○";
-      } else if (v == 2) {
         os << "●";
+      } else if (v == 2) {
+        os << "○";
       }
       os << " ";
     }
