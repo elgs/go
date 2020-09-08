@@ -4,15 +4,14 @@
 #include <sstream>
 #include <vector>
 
-#include "go_board.h"
 #include "shared.h"
+#include "go_board.h"
 
 using namespace std;
 
 struct Game {
   vector<Board> boards{};
   Game() { boards.push_back(Board{}); }
-  ~Game() {}
 
   void move(int x, int y);
 
@@ -28,9 +27,10 @@ ostream& operator<<(ostream& os, const Game& game) {
 
 void Game::move(int x, int y) {
   auto board = boards.back();
+  board.groups.clear();
   if (board.getAt(x, y) != 0) {
     stringstream s;
-    s << "Invalid move at: " << x << y;
+    s << "invalid move at: " << x << ", " << y;
     throw runtime_error(s.str());
   }
   ++board.move.index;

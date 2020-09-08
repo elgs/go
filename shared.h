@@ -1,3 +1,3 @@
 #pragma once
 
-#define BOARD_LINES 9
+#define LINES 19

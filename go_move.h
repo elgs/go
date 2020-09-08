@@ -26,7 +26,8 @@ struct Move {
 };
 
 ostream& operator<<(ostream& os, const Move& move) {
-  os << "index: " << move.index << ", x: " << move.x << ", y: " << move.y
-     << ", side: " << move.side;
+  os << "move: " << move.index << ", x: " << static_cast<char>(move.x + 97)
+     << "(" << move.x << ")"
+     << ", y: " << move.y << ", side: " << (move.side == 1 ? "●" : "○") << endl;
   return os;
 }
