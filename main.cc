@@ -8,11 +8,14 @@ using namespace std;
 int main() {
   auto game = new Game();
 
-  game->move(4, 4);
-  game->move(3, 3);
-  game->move(5, 3);
-  game->move(5, 6);
-  cout << *game;
+  int x, y;
+  while (true) {
+    auto latestBoard = game->boards.back();
+    cout << latestBoard;
+    cout << (latestBoard.move.side == 1 ? "● " : "○ ");
+    cin >> x >> y;
+    game->move(x, y);
+  };
 
   delete game;
 

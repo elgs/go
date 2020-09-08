@@ -4,8 +4,8 @@
 #include <sstream>
 #include <vector>
 
-#include "shared.h"
 #include "go_board.h"
+#include "shared.h"
 
 using namespace std;
 

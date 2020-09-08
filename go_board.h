@@ -12,7 +12,7 @@ using namespace std;
 
 struct GroupStats {
   int id = 0;
-  int side = 0;
+  int side = -1;
   vector<Move> stones{};
   vector<Move> liberties{};
 };
